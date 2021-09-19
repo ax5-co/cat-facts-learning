@@ -1,0 +1,14 @@
+Application urls:
+
+To retrieve all cat breeds (pagination enabled): 
+http://localhost:8080/api/breeds?page=2&limit=5
+
+To retrieve all cat breeds searched by a term 
+(limit Path Variable limits how many breeds to be displayed, no pagination):
+http://localhost:8080/api/breeds/search?term=eg&limit=1
+
+openApi definition (SwaggerUI) by Swagger:
+http://localhost:8080/swagger-ui.html
+
+OpenApi docs:
+http://localhost:8080/v3/api-docs
