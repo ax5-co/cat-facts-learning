@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.retrofit.mapstruct.example.catfacts.TheCatApiConfiguration;
 import com.retrofit.mapstruct.example.catfacts.dto.TheCatApiBreedDto;
 
 import retrofit2.Call;
@@ -12,7 +11,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Query;
 @Repository
-public interface TheCatApiRetrofitDAO extends TheCatApiConfiguration {
+public interface TheCatApiRetrofitDAO {
 
 	@GET("/v1/breeds")
 	Call<List<TheCatApiBreedDto>> getAllBreeds(

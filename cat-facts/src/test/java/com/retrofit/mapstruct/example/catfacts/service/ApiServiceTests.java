@@ -15,6 +15,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Value;
 
 import com.retrofit.mapstruct.example.catfacts.dao.TheCatApiRetrofitServiceRepo;
 import com.retrofit.mapstruct.example.catfacts.dto.BreedDTO;
@@ -51,7 +52,8 @@ class ApiServiceTests {
 		//default Mock behavior:
 		when(mockBreedMappingService.mapApiBreedsToBreedDtos(apiBreedsList))
 		.thenReturn(breedDTOs);
-		apiService = new ApiService(mockCatApiRetrofitServiceRepo,
+		//sending an empty API_KEY. trying to include it by $value failed.
+		apiService = new ApiService("", mockCatApiRetrofitServiceRepo,
 				mockBreedMappingService);
 	}
 	

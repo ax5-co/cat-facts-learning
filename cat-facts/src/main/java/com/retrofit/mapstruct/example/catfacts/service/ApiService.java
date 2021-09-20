@@ -3,34 +3,44 @@ package com.retrofit.mapstruct.example.catfacts.service;
 import java.io.IOException;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import com.retrofit.mapstruct.example.catfacts.TheCatApiConfiguration;
 import com.retrofit.mapstruct.example.catfacts.dao.TheCatApiRetrofitServiceRepo;
 import com.retrofit.mapstruct.example.catfacts.dto.BreedDTO;
 import com.retrofit.mapstruct.example.catfacts.dto.BreedsResponse;
 import com.retrofit.mapstruct.example.catfacts.dto.TheCatApiBreedDto;
 
-import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import retrofit2.Response;
 
 @Slf4j
 @Service
-@AllArgsConstructor
-public class ApiService implements TheCatApiConfiguration{
+public class ApiService {
 	
+	private final java.lang.String key;
 
 	private final TheCatApiRetrofitServiceRepo catApiService;
 
 	private final BreedMappingService breedMappingService;
 	
+	public ApiService(@Value("${api.key}") String aPI_KEY, 
+			TheCatApiRetrofitServiceRepo catApiService,
+			BreedMappingService breedMappingService) {
+		super();
+		key = aPI_KEY;
+		this.catApiService = catApiService;
+		this.breedMappingService = breedMappingService;
+	}
+
 	public BreedsResponse getAllBreeds(int page, int limit) {
+		
+		log.info("API_KEY= " + key);
 		
 		BreedsResponse responseDto =new BreedsResponse();
 		try {
 			Response<List<TheCatApiBreedDto>> allBreedsResponse =
-					catApiService.getAllBreeds(API_KEY, page, limit);
+					catApiService.getAllBreeds(key, page, limit);
 			List<TheCatApiBreedDto> apiBreeds = allBreedsResponse.body();
 			List<BreedDTO> breedDTOs =breedMappingService
 					.mapApiBreedsToBreedDtos(apiBreeds);
@@ -69,7 +79,7 @@ public class ApiService implements TheCatApiConfiguration{
 		BreedsResponse responseDto = new BreedsResponse();
 		try {
 			Response<List<TheCatApiBreedDto>> allBreedsResponse =
-					catApiService.getSearchedBreeds(API_KEY, searchTerm, limit);
+					catApiService.getSearchedBreeds(key, searchTerm, limit);
 			List<TheCatApiBreedDto> apiBreeds = allBreedsResponse.body();
 			List<BreedDTO> breedDTOs =breedMappingService
 					.mapApiBreedsToBreedDtos(apiBreeds);
