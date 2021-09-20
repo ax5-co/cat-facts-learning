@@ -1,0 +1,4 @@
+api:
+    base-url: https://api.thecatapi.com
+    key: ce94b439-3a0f-4d97-afb2-0d0c83097f4a
+json-content-type: application/json
