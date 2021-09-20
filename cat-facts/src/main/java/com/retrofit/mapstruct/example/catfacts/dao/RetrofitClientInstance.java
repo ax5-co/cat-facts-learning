@@ -8,7 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-@PropertySource("classpath:application.properties")
+@PropertySource("classpath:application.yaml")
 @Slf4j
 public class RetrofitClientInstance {
 
