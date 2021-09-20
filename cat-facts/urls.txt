@@ -7,8 +7,11 @@ To retrieve all cat breeds searched by a term
 (limit Path Variable limits how many breeds to be displayed, no pagination):
 http://localhost:8080/api/breeds/search?term=eg&limit=1
 
-openApi definition (SwaggerUI) by Swagger:
-http://localhost:8080/swagger-ui.html
+To display a secret text (a method for testing @ApiIgnore)
+http://localhost:8080/api/secret
 
-OpenApi docs:
-http://localhost:8080/v3/api-docs
+Swagger-UI by Swagger:
+http://localhost:8080/swagger-ui/#/
+
+Specification docs:
+http://localhost:8080/v2/api-docs
