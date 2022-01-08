@@ -11,12 +11,14 @@ Application urls:
 To retrieve all cat breeds (pagination enabled): 
 /api/breeds?page=2&limit=5
 
-To retrieve all cat breeds searched by a term 
-(limit Path Variable limits how many breeds to be displayed, no pagination):
+To retrieve all cat breeds searched by a term (pagination enabled):
 /api/breeds/search?term=eg&limit=1
 
+A secret API 
+/api/secret
+
 openApi definition (SwaggerUI) by Swagger:
-/swagger-ui.html
+/swagger-ui/index.html
 
 OpenApi docs:
 /v3/api-docs
